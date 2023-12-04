@@ -30,11 +30,11 @@ function Home() {
               <h2 className=" text-left fw-bold mb-2 text-uppercase">HI {cookies.user.firstName}</h2>
             </MDBCardBody>
           </MDBCard>
-          <MDBCard className='bg-red-600  text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '1000px'}}>
-            <MDBBtn onClick={function(){navigate('/results')}  }  outline className='outline-none mx-2 px-5 text-white ' style={{  height: 'auto', maxHeight: '400px' }} color='dark' size='lg'>
+          <MDBCard className='bg-red-600  text-white my-5 mx-auto' style={{padding:'20px', borderRadius: '1rem', maxWidth: '1000px'}}>
+            <MDBBtn onClick={function(){navigate('/results')}  }   className='bg-gray-500 mx-2 px-5 text-white ' style={{  height: 'auto', maxHeight: '400px' }} color='dark' size='lg'>
                 Analize
             </MDBBtn>
-            <MDBBtn onClick={function(){navigate('/appointment')}  } outline className='mx-2 px-5 text-white '  color='dark' size='lg'>
+            <MDBBtn onClick={function(){navigate('/appointment')}  }  className='bg-gray-500 mx-2 mt-2 px-5 text-white '  color='dark' size='lg'>
                 Progamari
             </MDBBtn>
           </MDBCard>

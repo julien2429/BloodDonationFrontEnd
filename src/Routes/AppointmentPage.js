@@ -23,7 +23,7 @@ function Appointment(){
     const [value, onChange] = useState();
 
     const [data, setData] = useState([]);
-    
+    const navigate = useNavigate();
     const url="http://localhost:8080/appointment/date"
 
     useEffect(() => {
@@ -87,14 +87,12 @@ function Appointment(){
               <TimePicker className=" bg-orange-300 outline rounded-sm w-80 m-5" onChange={onChange} value={value} />
               <MDBBtn
                 onClick={check}
-                outline
-                className="mx-2 px-5 bg-gray-500 text-black hover:bg-gray-500 hover:outline-double"
-                color="white"
-                size="lg"
+                
+                className='bg-gray-500 w-60 mx-2 mt-2 px-5 text-white '  color='dark' size='lg'
               >
                 Check if available
               </MDBBtn>
-              <p className="small mt-3 pb-lg-2"><a class="text-bold text-white-50" href="/home">Go back</a></p>
+              <MDBBtn className='bg-gray-500 w-60 mx-2 mt-2 px-5 text-white '  color='dark' size='lg' onClick={function(){ navigate("/home")}}>Go back</MDBBtn>
               </MDBCardBody>
           </MDBCard>
         </MDBCol>
