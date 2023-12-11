@@ -8,8 +8,8 @@ import Home from './Routes/Home';
 import reportWebVitals from './reportWebVitals';
 import Results from './Routes/Results';
 import AppointmentPage from './Routes/AppointmentPage'
-
-
+import CurrentAppointment from './Routes/CurrentAppointment'
+import AddReportPage from './Routes/AddReportPage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +21,8 @@ root.render(
         <Route path="home" element={<Home/>}/>
         <Route path="results" element={<Results/>}/>
         <Route path="appointment" element={<AppointmentPage/>}/>
+        <Route path="currentAppointment" element={<CurrentAppointment/>}/>
+        <Route path="addReportPage" element={<AddReportPage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -27,6 +27,15 @@ function Appointment() {
   const navigate = useNavigate();
   const url = "http://localhost:8080/appointment/date";
 
+
+  const url2= "http://localhost:8080/person/"+cookies.user.idUser;
+
+  const fetchInfo =   async  () => {
+    return axios.get(url2).then((response) => setCookie(response.data));
+  };
+
+  
+
   const [disable, setDisable] = useState(true);
   useEffect(() => {
     if (!value) return;
@@ -81,7 +90,8 @@ function Appointment() {
     })
     .then(function (response) {
       console.log(response);
-      navigate("/home");
+      fetchInfo().then(()=>(navigate("/home")));
+      
     })
     .catch(function (error) {
       console.log(error);

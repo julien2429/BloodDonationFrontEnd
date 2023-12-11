@@ -1,4 +1,6 @@
-import React from 'react';
+
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import MDBTable from "mdb-react-ui-kit";
 import {
@@ -19,10 +21,20 @@ import { CookiesProvider, useCookies } from "react-cookie";
 function Results() {
   const navigate = useNavigate();
   const [cookies, setCookie] = useCookies(["user"]);
-
+  const [data, setData] = useState([]);
   const result = cookies.user.reports;
+  const url = "http://localhost:8080/appointment/date/today/";
+  const fetchInfo = () => {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1; // Months are zero-based, so we add 1
+    var day = today.getDate();
+    return axios.get(url+year+"/"+month+"/"+day).then((response) => setData(response.data));
+  };
 
- 
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   function boolToString( x)
   {
@@ -40,27 +52,20 @@ function Results() {
         <table className='outline outline-slate-600 table table-hover'>
       <thead>
         <tr>
+          <th>id Appointment</th>
           <th>Date</th>
-          <th>Anti HCV</th>
-          <th>Anti HIV 1/2</th>
-          <th>Anti HTLV 1/2</th>
-          <th>Syphilis Total Ab</th>
-          <th>Blood type</th>
-          <th>RH</th>
-          <th>Alt</th>
+          <th>Time</th>
+          <th>Arm</th>
         </tr>
         
-        {result.map((element,index) => {
+        {data.map((element,index) => {
             return(
                 <tr>
-                    <th>{element.appointment.dateOfAppointment.substring(0,10)}</th>                    
-                    <th>{boolToString(element.syphlisTotalAB)}</th>
-                    <th>{boolToString(element.antiHCV)}</th>
-                    <th>{boolToString(element.antiHiv1over2)}</th>
-                    <th>{boolToString(element.antiHtlv1over2)}</th>
-                    <th>{element.bloodType}</th>
-                    <th>{element.rh}</th>
-                    <th>{element.alt}</th>
+                    <th>{element.idAppointment}</th>
+                    <th>{element.dateOfAppointment.substring(0,10)}</th> 
+                    <th>{element.dateOfAppointment.substring(11,16)}</th>                             
+                    <th>{element.arm}</th>
+                    
                 </tr>
             )
      

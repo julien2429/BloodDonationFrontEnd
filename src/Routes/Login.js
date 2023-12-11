@@ -22,33 +22,48 @@ function Login() {
   const [cookies, setCookie] = useCookies(["user"]);
   
   const url = "http://localhost:8080/person";
-
-
-
-  
-  
   const navigate = useNavigate();
 
- 
-
-  function check()
+  async function check()
   {
     
-    axios.get(url+'/'+userName+'/'+password).then((response) => setData(response.data))
+    axios.get(url+'/'+userName+'/'+password).then((response) => {setData(response.data)})
     .catch(function (error) {
       
     });
     
     if(data.length !== 0)
-    {
-      console.log(data);
-      setCookie("user", data,{ path: '/' });
-      navigate("/home");
+      {
+        console.log(data);
+        setCookie("user", data,{ path: '/' });
+        navigate("/home");
     }
+  }
+
+  const loginCheck = async () => {
+    await axios.get(url+'/'+userName+'/'+password).then((response) => { setData(response.data); return response.data; })
+    .catch(function (error) {
+    });
     
     
   }
-  
+
+  async function runLogin()
+  {
+    let datatest =  await axios.get(url+'/'+userName+'/'+password).then((response) => { setData(response.data); return response.data; })
+    .catch(function (error) {
+    });
+    
+    
+    if( datatest.length !== 0 )
+    {
+        console.log(datatest);
+        setCookie("user", datatest,{ path: '/' });
+        navigate("/home");
+    }
+    
+  }
+
   return (
     <MDBContainer fluid className='bg-wheat'>
 
@@ -65,7 +80,7 @@ function Login() {
               <MDBInput onChange={(ev) => setPassword(ev.target.value)} wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Password' id='formControlLg' type='password' size="lg"/>
 
               <p className="small mb-3 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-              <MDBBtn onClick={check} outline className='mx-2 px-5' color='white' size='lg'>
+              <MDBBtn onClick={()=> { runLogin() }} outline className='mx-2 px-5' color='white' size='lg'>
                 Login
               </MDBBtn>
 
