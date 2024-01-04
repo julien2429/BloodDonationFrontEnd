@@ -39,23 +39,44 @@ function Home() {
   const [rh, setRH] = useState('-');
   const [alt, setAlt] = useState('');
   
-
-  function check() {
+  
+  async function check() {
     if (
       idAppointment !== '' &&
       bloodType != '-' &&
       rh !== '-' &&
       alt !== ''
     ) {
-       console.log(idAppointment)
-       console.log(syphilisTotalAB)
-       console.log(antiHCV)
-       console.log(antiHiv1over2)
-       console.log(antiHtlv1over2)
-       console.log(bloodType)
-       console.log(rh)
-       console.log(alt)
+      
+        console.log({
+          idAppointment: idAppointment,
+          syphilisTotalAB: syphilisTotalAB,
+          antiHCV:antiHCV,
+          antiHiv1over2: antiHiv1over2,
+          antiHtlv1over2:antiHtlv1over2,
+          bloodType:bloodType,
+          rh: rh,
+          alt: parseInt(alt)
+        })
         
+        axios
+          .post("http://localhost:8080/report/add/"+idAppointment, {
+            syphilisTotalAB: syphilisTotalAB,
+            antiHCV:antiHCV,
+            antiHiv1over2: antiHiv1over2,
+            antiHtlv1over2:antiHtlv1over2,
+            bloodType:bloodType,
+            rh: rh,
+            alt: parseInt(alt)
+          })
+          .then(function (response) {
+            console.log(response);
+            navigate("/home");
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
       }
       
   }
@@ -78,19 +99,19 @@ function Home() {
                 })}
             </select>
             <label className="outline outline-black p-1 mt-3 mx-3">
-                <input onChange={(e) => setSyphilisTotalAB(e.target.value) } className="" type="checkbox" />
+                <input onChange={(e) => setSyphilisTotalAB(!syphilisTotalAB) } className="" type="checkbox" />
                 syphilisTotalAB      
             </label>
             <label className="outline outline-black p-1 mt-3 mx-3">
-                <input onChange={(e) => setAntiHCV(e.target.value) } className="mx-2" type="checkbox" />
+                <input onChange={(e) => setAntiHCV( !antiHCV ) } className="mx-2" type="checkbox" />
                     antiHCV      
             </label>
             <label className="outline outline-black p-1 mt-3 mx-3">
-                <input onChange={(e) => setAntiHiv1over2(e.target.value) } className="mx-2" type="checkbox" />
+                <input onChange={(e) => setAntiHiv1over2(!antiHiv1over2) } className="mx-2" type="checkbox" />
                     antiHiv     1/2       
             </label>
             <label className="outline outline-black p-1 mt-3 mx-3">
-                <input onChange={(e) => setAntiHtlv1over2(e.target.value) } className="mx-2" type="checkbox" />
+                <input onChange={(e) => setAntiHtlv1over2(!antiHtlv1over2) } className="mx-2" type="checkbox" />
                 antiHtlv 1/2       
             </label>
             <label className="outline  outline-black p-1 mt-3 mx-3">

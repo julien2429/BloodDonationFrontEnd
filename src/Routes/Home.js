@@ -68,7 +68,7 @@ function Home() {
       <MDBRow className='d-flex justify-content-center align-items-center h-100'>
         <MDBCol col='12'>
 
-          <MDBCard className='bg-red-600 outline outline-black text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '1000px'}}>
+          <MDBCard className='bg-red-600 outline  shadow-2xl border-black outline-black text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '1000px'}}>
             <MDBCardBody className='p-5 d-flex flex-column  mx-auto w-100'>
 
               <h2 className=" fw-bold text-2xl text-center">Hi {cookies.user.firstName}!</h2>

@@ -95,13 +95,14 @@ function Signup() {
           });
       }
       else{
+        alert('Not good >:(')
         setUserName("");
         setCNP("");
         document.getElementById("userNameField").value="";
         document.getElementById("CNPField").value="";
         return;
       }
-    } else console.log("bad input");
+    } else alert('Not good >:(');
   }
 
   return (
@@ -109,7 +110,7 @@ function Signup() {
       <MDBRow className="d-flex justify-content-center align-items-center h-100 ">
         <MDBCol col="12">
           <MDBCard
-            className="bg-red-600 border-black text-white my-5 mx-auto"
+            className="bg-red-600 outline outline-black shadow-2xl border-black text-white my-5 mx-auto"
             style={{ borderRadius: "1rem", maxWidth: "400px" }}
           >
             <MDBCardBody className="p-5 d-flex flex-column align-items-center mx-auto w-100">
@@ -173,7 +174,7 @@ function Signup() {
               <MDBBtn
                 onClick={check}
                 outline
-                className="mx-2 px-5"
+                className="mt-2 px-5"
                 color="white"
                 size="lg"
               >

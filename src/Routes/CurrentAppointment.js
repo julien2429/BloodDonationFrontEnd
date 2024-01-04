@@ -59,11 +59,15 @@ function Results() {
         </tr>
         
         {data.map((element,index) => {
+            let fakeElement = element.dateOfAppointment.toLocaleString();
+            console.log(fakeElement.substring(11,16))
+            let hour = fakeElement.substring(11,13);
+            let fakeHour= parseInt(hour)+2;
             return(
                 <tr>
                     <th>{element.idAppointment}</th>
                     <th>{element.dateOfAppointment.substring(0,10)}</th> 
-                    <th>{element.dateOfAppointment.substring(11,16)}</th>                             
+                    <th>{ fakeHour + element.dateOfAppointment.substring(13,16)}</th>                             
                     <th>{element.arm}</th>
                     
                 </tr>
