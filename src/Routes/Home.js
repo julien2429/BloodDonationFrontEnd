@@ -68,13 +68,13 @@ function Home() {
       <MDBRow className='d-flex justify-content-center align-items-center h-100'>
         <MDBCol col='12'>
 
-          <MDBCard className='bg-red-600 outline  shadow-2xl border-black outline-black text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '1000px'}}>
+          <MDBCard background='#bc1d1d' className='  outline  shadow-2xl border-black outline-black text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '1000px'}}>
             <MDBCardBody className='p-5 d-flex flex-column  mx-auto w-100'>
 
               <h2 className=" fw-bold text-2xl text-center">Hi {cookies.user.firstName}!</h2>
             </MDBCardBody>
           </MDBCard>
-          <MDBCard className='bg-red-600 outline outline-black text-white my-5 mx-auto' style={{padding:'20px', borderRadius: '1rem', maxWidth: '1000px'}}>
+          <MDBCard background='#bc1d1d' className=' outline outline-black text-white my-5 mx-auto' style={{padding:'20px', borderRadius: '1rem', maxWidth: '1000px'}}>
             <MDBBtn onClick={function(){navigate('/addReportPage')}  }   className='bg-gray-500 outline outline-gray-800 mx-2 px-5 text-white ' style={{  height: 'auto', maxHeight: '400px' }} color='dark' size='lg'>
                 Adauga Analize
             </MDBBtn>
