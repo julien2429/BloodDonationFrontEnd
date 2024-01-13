@@ -34,5 +34,4 @@ For the database I choose PostgreSQL as I had prior knowledge in working with it
  - Deploy the application.
  - Make the solution universal, such that any blood donation center can enroll.
  - Add security measures.
- - 
 
